@@ -64,6 +64,8 @@
       <!-- fallback initialization with default classpath bundled sp metadata -->
       <cm:property name="saml.sp.metadata.classpath.fallback" value="/metadata/sp/pentaho-ssocircle-dev-sp.xml" />
 
+	  <cm:property name="saml.sp.name.id.policy.format" value="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" />
+
       <!-- =================================== -->
       <!-- user attributes mapped to roles     -->
       <!-- =================================== -->
@@ -346,6 +348,7 @@
     <property name="defaultProfileOptions">
       <bean class="org.springframework.security.saml.websso.WebSSOProfileOptions">
         <property name="includeScoping" value="false"/>
+        <property name="nameID" value="${saml.sp.name.id.policy.format}" />
       </bean>
     </property>
     <property name="webSSOprofile" ref="webSSOprofile" />
