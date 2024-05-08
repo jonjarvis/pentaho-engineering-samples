@@ -31,6 +31,10 @@
       
       <cm:property name="saml.max.authentication.age.in.secs" value="7200" /> <!-- default to 2 hours in seconds -->
 
+	  <cm:property name="saml.signing.algorithm" value="" /> <!-- default signature algorithm to sha1 -->
+
+      <cm:property name="saml.digest.method.algorithm" value="" /> <!-- default signature algorithm to sha1 -->
+
       <!-- ========================== -->
       <!-- metadata providers         -->
       <!-- ========================== -->
@@ -527,6 +531,8 @@
       <bean class="org.springframework.security.saml.metadata.ExtendedMetadata">
         <property name="idpDiscoveryEnabled" value="${saml.discovery.idp.enabled}"/>
         <property name="requireLogoutRequestSigned" value="${ensure.incoming.logout.request.signed}"/>
+        <property name="signingAlgorithm" value="${saml.signing.algorithm}" />
+        <property name="digestMethodAlgorithm" value="${saml.digest.method.algorithm}" />
       </bean>
     </property>
     <property name="keyManager" ref="keyManager" />
@@ -580,6 +586,8 @@
             <bean class="org.springframework.security.saml.metadata.ExtendedMetadata">
               <property name="idpDiscoveryEnabled" value="${saml.discovery.idp.enabled}"/>
               <property name="requireLogoutRequestSigned" value="${ensure.incoming.logout.request.signed}"/>
+              <property name="signingAlgorithm" value="${saml.signing.algorithm}" />
+        	  <property name="digestMethodAlgorithm" value="${saml.digest.method.algorithm}" />
             </bean>
           </argument>
         </bean>
@@ -602,6 +610,8 @@
               <property name="idpDiscoveryEnabled" value="${saml.discovery.idp.enabled}"/>
               <property name="requireLogoutRequestSigned" value="${ensure.outgoing.logout.request.signed}"/>
               <property name="requireLogoutResponseSigned" value="${ensure.outgoing.logout.response.signed}"/>
+              <property name="signingAlgorithm" value="${saml.signing.algorithm}" />
+              <property name="digestMethodAlgorithm" value="${saml.digest.method.algorithm}" />
             </bean>
           </argument>
         </bean>
